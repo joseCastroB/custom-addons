@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_opermaq_sale_order_form_inherit" model="ir.ui.view">
+        <field name="name">opermaq.sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//notebook" position="inside">
+                
+                <page string="Facturación Opermaq" name="page_opermaq_facturas">
+                    
+                    <group>
+                        <group>
+                            <field name="opermaq_factura_id" string="Factura Manual" placeholder="Seleccione una factura..."/>
+                        </group>
+                        
+                        <group>
+                            <field name="opermaq_estado_factura" string="Estado de Facturación" widget="badge" 
+                                   decoration-info="opermaq_estado_factura == 'to invoice'" 
+                                   decoration-success="opermaq_estado_factura == 'invoiced'"/>
+                        </group>
+                    </group>
+                    
+                </page>
+                
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_opermaq_quotation_tree_inherit" model="ir.ui.view">
+        <field name="name">opermaq.quotation.tree.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="opermaq_factura_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_opermaq_order_tree_inherit" model="ir.ui.view">
+        <field name="name">opermaq.order.tree.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="opermaq_factura_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

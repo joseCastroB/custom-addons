@@ -11,6 +11,35 @@
                 <field name="opermaq_estado_equipo_id"/>
             </xpath>
             
+            <xpath expr="//field[@name='effective_date']" position="before">
+                <field name="maquina"/>
+                <field name="marca"/>
+                <field name="medida_ruedas"/>
+            </xpath>
+
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="alias"/>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Características">
+                    <group>
+                        <group>
+                            <field name="fecha_compra"/>
+                            <field name="ano_fabricacion"/>
+                            <field name="temperatura_trabajo"/>
+                            <field name="peso"/>
+                        </group>
+                        <group>
+                            <field name="componentes"/>
+                            <field name="tipo_rueda"/>
+                            <field name="altura_elevacion"/>
+                            <field name="capacidad_carga"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
         </field>
     </record>
 </odoo>
